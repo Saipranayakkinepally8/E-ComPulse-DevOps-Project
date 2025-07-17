@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyc-deployment
+  labels:
+    app: kyc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kyc
+  template:
+    metadata:
+      labels:
+        app: kyc
+    spec:
+      containers:
+        - name: kyc-container
+          image: saipranaydocker/kyc-service:v2  # ✅ Your Docker image
+          ports:
+            - containerPort: 3000
